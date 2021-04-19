@@ -14,39 +14,47 @@ class ExploreCategoriesTable extends StatelessWidget {
             children: [
               ExploreCategoryTableTile(
                 category: "Trending",
-                colors: [Colors.red[400], Colors.red[600], Colors.red[900]],
+                backgroundColors: [
+                  Color(0xff761A25),
+                  Color(0xff9D2A37),
+                  Color(0xffC12F42)
+                ],
                 icon: Icons.fire_extinguisher,
               ),
               ExploreCategoryTableTile(
                 category: "Music",
-                colors: [
-                  Colors.teal[400],
-                  Colors.teal[700],
-                  Colors.teal[900],
+                backgroundColors: [
+                  Color(0xff2EA79E),
+                  Color(0xff27887F),
+                  Color(0xff18635C)
                 ],
                 icon: Icons.music_note,
               ),
               ExploreCategoryTableTile(
                 category: "Gaming",
-                colors: [
-                  Colors.amber[600],
-                  Colors.amber[700],
-                  Colors.amber[900]
+                backgroundColors: [
+                  Color(0xff805A51),
+                  Color(0xffA07064),
+                  Color(0xffC38674)
                 ],
                 icon: Icons.gamepad,
               ),
               ExploreCategoryTableTile(
                 category: "News",
-                colors: [
-                  Colors.indigo[300],
-                  Colors.indigo,
-                  Colors.indigo[900],
+                backgroundColors: [
+                  Color(0xff0C4379),
+                  Color(0xff074B8A),
+                  Color(0xff05519C)
                 ],
                 icon: Icons.new_releases_sharp,
               ),
               ExploreCategoryTableTile(
                 category: "Sports",
-                colors: [Colors.blue[400], Colors.blue, Colors.blue[900]],
+                backgroundColors: [
+                  Color(0xff015168),
+                  Color(0xff007196),
+                  Color(0xff0983A9),
+                ],
                 icon: Icons.sports,
               ),
             ],

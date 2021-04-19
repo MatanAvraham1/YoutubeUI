@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:random_color/random_color.dart';
 
 class VideoTile extends StatelessWidget {
+  final RandomColor _randomColor = RandomColor();
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Container(
           height: 200,
-          color: RandomColor().randomColor(),
+          decoration: BoxDecoration(color: _randomColor.randomColor()),
         ),
         ListTile(
-          title: Text("Actor - Ben zini Officail Clip"),
-          subtitle: Text("Ben-Xini officail 2.3M 1 week ago"),
-          leading: CircleAvatar(
-            backgroundColor: Colors.red,
-          ),
+          title: Text("Mami boker tov - yaza lach"),
+          subtitle: Text("Ben zini - Official Channel"),
+          leading: CircleAvatar(backgroundColor: _randomColor.randomColor()),
         ),
       ],
     );

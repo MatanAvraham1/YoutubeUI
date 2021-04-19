@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class ExploreCategoryTableTile extends StatelessWidget {
   final String category;
-  final List<Color> colors;
+  final List<Color> backgroundColors;
   final IconData icon;
 
   const ExploreCategoryTableTile(
-      {Key key, this.category, this.colors, this.icon})
+      {Key key, this.category, this.backgroundColors, this.icon})
       : super(key: key);
 
   @override
@@ -19,22 +19,34 @@ class ExploreCategoryTableTile extends StatelessWidget {
           width: MediaQuery.of(context).size.width / 2 - 6,
           height: 45,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Icon(icon),
-              SizedBox(
-                width: 3,
+              Padding(
+                padding: const EdgeInsets.only(left: 20),
+                child: Icon(
+                  icon,
+                  color: Colors.white,
+                ),
               ),
-              Text(
-                category,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+              Padding(
+                padding: const EdgeInsets.only(left: 12),
+                child: Text(
+                  category,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                    color: Colors.white,
+                  ),
+                ),
               ),
             ],
           ),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(4),
             gradient: LinearGradient(
-              colors: colors,
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: backgroundColors,
             ),
           ),
         ),

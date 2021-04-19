@@ -15,6 +15,7 @@ class HomePage extends StatelessWidget {
             ],
           );
         }
+
         return VideoTile();
       },
     );
