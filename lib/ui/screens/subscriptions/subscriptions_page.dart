@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:random_color/random_color.dart';
 import 'package:youtube/ui/screens/home/components/category_list.dart';
 import 'package:youtube/ui/screens/home/components/video_tile.dart';
 import 'package:youtube/ui/screens/subscriptions/components/subscribers_pepole_list.dart';
@@ -10,8 +9,6 @@ class SubscriptionsPage extends StatefulWidget {
 }
 
 class _SubscriptionsPageState extends State<SubscriptionsPage> {
-  RandomColor _randomColor = RandomColor();
-
   @override
   Widget build(BuildContext context) {
     return ListView.builder(

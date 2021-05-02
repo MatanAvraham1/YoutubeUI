@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:youtube/constants/themes.dart';
 import 'package:youtube/main.dart';
+import 'package:youtube/translations/locale_keys.g.dart';
 import 'package:youtube/ui/screens/explore/explore_page.dart';
 import 'package:youtube/ui/screens/home/home_page.dart';
 import 'package:youtube/ui/screens/library/library_page.dart';
 import 'package:youtube/ui/screens/subscriptions/subscriptions_page.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class RootPage extends StatefulWidget {
   @override
@@ -21,24 +24,51 @@ class _RootPageState extends State<RootPage> {
     SubscriptionsPage(),
     LibraryPage(),
   ];
+  bool isLightMode;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final isLightMode = MyApp.of(context).themeMode == ThemeMode.light;
+    isLightMode = isLightModeF(context);
 
     return Scaffold(
-      body: pages.elementAt(_selectedIndex),
-      floatingActionButton: FloatingActionButton(
-        child:
-            Icon(isLightMode ? Icons.nightlight_round : Icons.wb_sunny_rounded),
-        onPressed: () {
-          if (isLightMode) {
-            MyApp.of(context).setTheme(ThemeMode.dark);
-          } else {
-            MyApp.of(context).setTheme(ThemeMode.light);
-          }
-        },
+      drawer: Drawer(
+        child: SafeArea(
+          child: Column(
+            children: [
+              SwitchListTile(
+                secondary: Icon(Icons.nightlight_round),
+                title: Text("Dark Mode"),
+                value: !isLightMode,
+                onChanged: (value) {
+                  if (isLightMode) {
+                    MyApp.of(context).setTheme(ThemeMode.dark);
+                  } else {
+                    MyApp.of(context).setTheme(ThemeMode.light);
+                  }
+                },
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  context.setLocale(Locale('en'));
+                },
+                child: Text("English"),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  context.setLocale(Locale('he'));
+                },
+                child: Text("עברית"),
+              ),
+            ],
+          ),
+        ),
       ),
+      body: pages.elementAt(_selectedIndex),
       appBar: AppBar(
         leading: Padding(
           padding: const EdgeInsets.only(left: 9),
@@ -54,8 +84,15 @@ class _RootPageState extends State<RootPage> {
           IconButton(
               icon: Icon(Icons.notifications_outlined), onPressed: () {}),
           IconButton(icon: Icon(Icons.search_outlined), onPressed: () {}),
-          IconButton(
-              icon: Icon(Icons.account_circle_outlined), onPressed: () {})
+          Builder(
+            builder: (context) => IconButton(
+              icon: Icon(Icons.account_circle_outlined),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+                // Scaffold.of(context).openDrawer();
+              },
+            ),
+          )
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -67,7 +104,7 @@ class _RootPageState extends State<RootPage> {
           BottomNavigationBarItem(
             // ignore: deprecated_member_use
             title: Text(
-              "Home",
+              LocaleKeys.Home.tr(),
               style: TextStyle(color: Theme.of(context).iconTheme.color),
             ),
             icon: Icon(
@@ -80,7 +117,7 @@ class _RootPageState extends State<RootPage> {
           BottomNavigationBarItem(
             // ignore: deprecated_member_use
             title: Text(
-              "Explore",
+              LocaleKeys.Explore.tr(),
               style: TextStyle(color: Theme.of(context).iconTheme.color),
             ),
             icon: Icon(
@@ -104,7 +141,7 @@ class _RootPageState extends State<RootPage> {
           BottomNavigationBarItem(
             // ignore: deprecated_member_use
             title: Text(
-              "Subscriptions",
+              LocaleKeys.Subscriptions.tr(),
               style: TextStyle(color: Theme.of(context).iconTheme.color),
             ),
             icon: Icon(
@@ -117,7 +154,7 @@ class _RootPageState extends State<RootPage> {
           BottomNavigationBarItem(
               // ignore: deprecated_member_use
               title: Text(
-                "Library",
+                LocaleKeys.Library.tr(),
                 style: TextStyle(color: Theme.of(context).iconTheme.color),
               ),
               icon: Icon(
@@ -146,7 +183,7 @@ class _RootPageState extends State<RootPage> {
                       child: Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          "Create",
+                          LocaleKeys.Create.tr(),
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 24,
@@ -156,12 +193,12 @@ class _RootPageState extends State<RootPage> {
                     ),
                     ListTile(
                       onTap: () {},
-                      title: Text("Upload a video"),
+                      title: Text(LocaleKeys.Upload_a_video.tr()),
                       leading: Icon(Icons.upload_rounded),
                     ),
                     ListTile(
                       onTap: () {},
-                      title: Text("Go Live"),
+                      title: Text(LocaleKeys.Go_Live.tr()),
                       leading: Icon(Icons.radio_button_checked_sharp),
                     ),
                   ],

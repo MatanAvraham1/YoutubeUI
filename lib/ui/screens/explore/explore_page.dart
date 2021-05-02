@@ -1,8 +1,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:youtube/translations/locale_keys.g.dart';
 import 'package:youtube/ui/screens/explore/components/explore_categories_table.dart';
 import 'package:youtube/ui/screens/home/components/video_tile.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class ExplorePage extends StatelessWidget {
   @override
@@ -22,7 +24,7 @@ class ExplorePage extends StatelessWidget {
                           child: Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "Trending videos",
+                              LocaleKeys.Trending_videos.tr(),
                               style: TextStyle(
                                 fontWeight: FontWeight.w500,
                                 // fontSize: 14,

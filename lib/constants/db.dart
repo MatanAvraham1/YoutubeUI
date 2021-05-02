@@ -1,5 +1,4 @@
 import 'package:youtube/models/user.dart';
-import 'package:youtube/models/video.dart';
 
 final users = [
   User(

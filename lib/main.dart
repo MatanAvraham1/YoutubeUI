@@ -1,8 +1,21 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:youtube/constants/themes.dart';
 import 'package:youtube/ui/screens/root_page.dart';
 
-void main() {
-  runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await EasyLocalization.ensureInitialized();
+
+  runApp(
+    EasyLocalization(
+      supportedLocales: [Locale('en'), Locale('he')],
+      path: 'assets/translations',
+      fallbackLocale: Locale('en'),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -16,10 +29,6 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   ThemeMode _themeMode = ThemeMode.light;
 
-  ThemeMode get themeMode {
-    return _themeMode;
-  }
-
   void setTheme(ThemeMode themeMode) {
     setState(() {
       _themeMode = themeMode;
@@ -29,16 +38,13 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       home: RootPage(),
       themeMode: _themeMode,
-      theme: ThemeData(
-        primaryColor: Colors.white,
-        brightness: Brightness.light,
-      ),
-      darkTheme: ThemeData(
-        primaryColor: Colors.black,
-        brightness: Brightness.dark,
-      ),
+      theme: appThemeData[AppTheme.Light],
+      darkTheme: appThemeData[AppTheme.Dark],
     );
   }
 }

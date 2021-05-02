@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:random_color/random_color.dart';
+import 'package:youtube/translations/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class LibraryPage extends StatelessWidget {
   final RandomColor _randomColor = RandomColor();
@@ -13,7 +15,7 @@ class LibraryPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              "Recent",
+              LocaleKeys.Recent.tr(),
               style: TextStyle(fontSize: 16),
             ),
           ),
@@ -45,27 +47,27 @@ class LibraryPage extends StatelessWidget {
             ),
           ),
           ListTile(
-            title: Text("History"),
+            title: Text(LocaleKeys.History.tr()),
             leading: Icon(Icons.history),
           ),
           ListTile(
-            title: Text("Your Videos"),
+            title: Text(LocaleKeys.Your_Videos.tr()),
             leading: Icon(Icons.video_collection_outlined),
           ),
           ListTile(
-            title: Text("Your Movies"),
+            title: Text(LocaleKeys.Your_Movies.tr()),
             leading: Icon(Icons.local_movies_outlined),
           ),
           ListTile(
-            title: Text("Watch later"),
+            title: Text(LocaleKeys.Watch_later.tr()),
             leading: Icon(
               Icons.watch_later_outlined,
             ),
           ),
           Divider(),
           ListTile(
-            title: Text("Playlists"),
-            trailing: Text("Recently added"),
+            title: Text(LocaleKeys.Playlists.tr()),
+            trailing: Text(LocaleKeys.Recently_added.tr()),
           ),
           ListTile(
             leading: IconButton(
@@ -76,12 +78,12 @@ class LibraryPage extends StatelessWidget {
               onPressed: () {},
             ),
             title: Text(
-              "New playlist",
+              LocaleKeys.New_playlist.tr(),
               style: TextStyle(color: Colors.blue),
             ),
           ),
           ListTile(
-            title: Text("Liked videos"),
+            title: Text(LocaleKeys.Liked_videos.tr()),
             leading: Icon(Icons.thumb_up_alt_outlined),
           ),
         ],

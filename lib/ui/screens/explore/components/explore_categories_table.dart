@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:youtube/translations/locale_keys.g.dart';
 import 'package:youtube/ui/screens/explore/components/explore_category_table_tile.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class ExploreCategoriesTable extends StatelessWidget {
   @override
@@ -13,7 +15,7 @@ class ExploreCategoriesTable extends StatelessWidget {
           child: Wrap(
             children: [
               ExploreCategoryTableTile(
-                category: "Trending",
+                category: LocaleKeys.Trending.tr(),
                 backgroundColors: [
                   Color(0xff761A25),
                   Color(0xff9D2A37),
@@ -22,7 +24,7 @@ class ExploreCategoriesTable extends StatelessWidget {
                 icon: Icons.fire_extinguisher,
               ),
               ExploreCategoryTableTile(
-                category: "Music",
+                category: LocaleKeys.Music.tr(),
                 backgroundColors: [
                   Color(0xff2EA79E),
                   Color(0xff27887F),
@@ -31,7 +33,7 @@ class ExploreCategoriesTable extends StatelessWidget {
                 icon: Icons.music_note,
               ),
               ExploreCategoryTableTile(
-                category: "Gaming",
+                category: LocaleKeys.Gaming.tr(),
                 backgroundColors: [
                   Color(0xff805A51),
                   Color(0xffA07064),
@@ -40,7 +42,7 @@ class ExploreCategoriesTable extends StatelessWidget {
                 icon: Icons.gamepad,
               ),
               ExploreCategoryTableTile(
-                category: "News",
+                category: LocaleKeys.News.tr(),
                 backgroundColors: [
                   Color(0xff0C4379),
                   Color(0xff074B8A),
@@ -49,7 +51,7 @@ class ExploreCategoriesTable extends StatelessWidget {
                 icon: Icons.new_releases_sharp,
               ),
               ExploreCategoryTableTile(
-                category: "Sports",
+                category: LocaleKeys.Sports.tr(),
                 backgroundColors: [
                   Color(0xff015168),
                   Color(0xff007196),

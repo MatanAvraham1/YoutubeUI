@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:youtube/main.dart';
+import 'package:youtube/constants/themes.dart';
 
 class CategoryTile extends StatefulWidget {
   final String title;
@@ -13,7 +13,7 @@ class CategoryTile extends StatefulWidget {
 class _CategoryTileState extends State<CategoryTile> {
   @override
   Widget build(BuildContext context) {
-    final isLightMode = MyApp.of(context).themeMode == ThemeMode.light;
+    final isLightMode = isLightModeF(context);
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 2),
