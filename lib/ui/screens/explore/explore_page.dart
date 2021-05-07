@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:youtube/constants/db.dart';
 import 'package:youtube/translations/locale_keys.g.dart';
 import 'package:youtube/ui/screens/explore/components/explore_categories_table.dart';
 import 'package:youtube/ui/screens/home/components/video_tile.dart';
@@ -12,7 +13,7 @@ class ExplorePage extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: List.generate(
-            50,
+            videos.length + 1,
             (index) => index == 0
                 ? Column(
                     children: [
@@ -35,7 +36,9 @@ class ExplorePage extends StatelessWidget {
                       ),
                     ],
                   )
-                : VideoTile()),
+                : VideoTile(
+                    video: videos[index - 1],
+                  )),
       ),
     );
   }

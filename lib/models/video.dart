@@ -13,6 +13,7 @@ class Video {
   int likes;
   int dislikes;
   String thumbnailUrl;
+  String id;
 
   Video(
       {this.owner,
@@ -23,7 +24,11 @@ class Video {
       this.description,
       this.dislikes,
       this.publishDate,
-      this.thumbnailUrl});
+      this.thumbnailUrl,
+      this.id}) {
+    this.thumbnailUrl =
+        "https://img.youtube.com/vi/${this.id}/maxresdefault.jpg";
+  }
 
   static Future<Video> fromUrl(String videoUrl) async {
     Video video = Video();

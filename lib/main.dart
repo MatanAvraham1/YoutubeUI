@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube/constants/themes.dart';
+import 'package:youtube/translations/codegen_loader.g.dart';
 import 'package:youtube/ui/screens/root_page.dart';
 
 void main() async {
@@ -13,6 +14,7 @@ void main() async {
       supportedLocales: [Locale('en'), Locale('he')],
       path: 'assets/translations',
       fallbackLocale: Locale('en'),
+      assetLoader: CodegenLoader(),
       child: MyApp(),
     ),
   );

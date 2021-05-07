@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:youtube/constants/db.dart';
 import 'package:youtube/ui/screens/home/components/category_list.dart';
 import 'package:youtube/ui/screens/home/components/video_tile.dart';
 import 'package:youtube/ui/screens/subscriptions/components/subscribers_pepole_list.dart';
@@ -12,7 +13,7 @@ class _SubscriptionsPageState extends State<SubscriptionsPage> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: 40,
+      itemCount: videos.length + 2,
       itemBuilder: (context, index) {
         if (index == 0) {
           return Column(
@@ -33,7 +34,7 @@ class _SubscriptionsPageState extends State<SubscriptionsPage> {
             ],
           );
         }
-        return VideoTile();
+        return VideoTile(video: videos[index - 2]);
       },
     );
   }

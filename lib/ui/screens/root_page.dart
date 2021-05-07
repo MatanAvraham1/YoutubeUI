@@ -70,6 +70,7 @@ class _RootPageState extends State<RootPage> {
       ),
       body: pages.elementAt(_selectedIndex),
       appBar: AppBar(
+        backgroundColor: Theme.of(context).canvasColor,
         leading: Padding(
           padding: const EdgeInsets.only(left: 9),
           child: SvgPicture.asset(
@@ -97,29 +98,23 @@ class _RootPageState extends State<RootPage> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
-        type: BottomNavigationBarType.shifting,
-        selectedIconTheme: Theme.of(context).iconTheme,
-        unselectedIconTheme: Theme.of(context).iconTheme,
+        type: BottomNavigationBarType.fixed,
+        selectedFontSize: 10,
+        unselectedFontSize: 10,
+        selectedItemColor: Theme.of(context).iconTheme.color,
+        unselectedItemColor: Theme.of(context).iconTheme.color,
         items: [
           BottomNavigationBarItem(
-            // ignore: deprecated_member_use
-            title: Text(
-              LocaleKeys.Home.tr(),
-              style: TextStyle(color: Theme.of(context).iconTheme.color),
-            ),
+            label: LocaleKeys.Home.tr(),
             icon: Icon(
               Icons.home_outlined,
             ),
             activeIcon: Icon(
-              Icons.home_filled,
+              Icons.home,
             ),
           ),
           BottomNavigationBarItem(
-            // ignore: deprecated_member_use
-            title: Text(
-              LocaleKeys.Explore.tr(),
-              style: TextStyle(color: Theme.of(context).iconTheme.color),
-            ),
+            label: LocaleKeys.Explore.tr(),
             icon: Icon(
               Icons.explore_outlined,
             ),
@@ -128,22 +123,14 @@ class _RootPageState extends State<RootPage> {
             ),
           ),
           BottomNavigationBarItem(
-            // ignore: deprecated_member_use
-            title: Text(
-              "Add",
-              style: TextStyle(color: Theme.of(context).iconTheme.color),
-            ),
+            label: "Add",
             icon: Icon(Icons.add_circle_outline_outlined),
             activeIcon: Icon(
               Icons.add_circle,
             ),
           ),
           BottomNavigationBarItem(
-            // ignore: deprecated_member_use
-            title: Text(
-              LocaleKeys.Subscriptions.tr(),
-              style: TextStyle(color: Theme.of(context).iconTheme.color),
-            ),
+            label: LocaleKeys.Subscriptions.tr(),
             icon: Icon(
               Icons.subscriptions_outlined,
             ),
@@ -152,11 +139,7 @@ class _RootPageState extends State<RootPage> {
             ),
           ),
           BottomNavigationBarItem(
-              // ignore: deprecated_member_use
-              title: Text(
-                LocaleKeys.Library.tr(),
-                style: TextStyle(color: Theme.of(context).iconTheme.color),
-              ),
+              label: LocaleKeys.Library.tr(),
               icon: Icon(
                 Icons.video_library_outlined,
               ),

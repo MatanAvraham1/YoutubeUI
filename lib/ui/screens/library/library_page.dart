@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:random_color/random_color.dart';
+import 'package:youtube/constants/db.dart';
 import 'package:youtube/translations/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 
@@ -24,21 +25,44 @@ class LibraryPage extends StatelessWidget {
             child: Center(
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: 20,
+                itemCount: videos.length,
                 itemBuilder: (context, index) => Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Column(
                     children: [
                       Container(
-                        color: _randomColor.randomColor(),
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: NetworkImage(videos[index].thumbnailUrl),
+                          ),
+                        ),
                         width: 135,
                         height: 80,
                       ),
-                      Column(
-                        children: [
-                          Text("juice wrld - super nany"),
-                          Text("juice wrld")
-                        ],
+                      Container(
+                        child: Column(
+                          children: [
+                            Container(
+                              width: 135,
+                              child: Flexible(
+                                child: Text(
+                                  videos[index].title,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              width: 135,
+                              child: Flexible(
+                                child: Text(
+                                  videos[index].owner.username,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(fontSize: 12),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ],
                   ),
