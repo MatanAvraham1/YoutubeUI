@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:youtube/constants/themes.dart';
+import 'package:youtube/models/video.dart';
 import 'package:youtube/translations/codegen_loader.g.dart';
 import 'package:youtube/ui/screens/root_page.dart';
 
@@ -39,14 +41,17 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-      home: RootPage(),
-      themeMode: _themeMode,
-      theme: appThemeData[AppTheme.Light],
-      darkTheme: appThemeData[AppTheme.Dark],
+    return ChangeNotifierProvider<ValueNotifier<Video>>(
+      create: (context) => ValueNotifier(null),
+      child: MaterialApp(
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
+        home: RootPage(),
+        themeMode: _themeMode,
+        theme: appThemeData[AppTheme.Light],
+        darkTheme: appThemeData[AppTheme.Dark],
+      ),
     );
   }
 }
