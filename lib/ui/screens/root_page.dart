@@ -44,6 +44,75 @@ class _RootPageState extends State<RootPage> {
             minHeight: 60,
             maxHeight: MediaQuery.of(context).size.height,
             builder: (height, percentage) {
+              return Container(
+                color: Theme.of(context).scaffoldBackgroundColor,
+                child: Row(
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.3,
+                      child: Image.network(
+                        video.value.thumbnailUrl,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    Expanded(
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: 7,
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.4,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Flexible(
+                                  child: Text(
+                                    video.value.title,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                      fontSize: 13,
+                                      color: Theme.of(context).iconTheme.color,
+                                    ),
+                                  ),
+                                ),
+                                Flexible(
+                                  child: Text(
+                                    video.value.owner.username,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                      fontSize: 11,
+                                      color: Theme.of(context).iconTheme.color,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              IconButton(
+                                icon: Icon(
+                                  Icons.play_arrow,
+                                ),
+                                onPressed: () {},
+                              ),
+                              IconButton(
+                                icon: Icon(
+                                  Icons.close,
+                                ),
+                                onPressed: () {},
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              );
+
               if (percentage > 0.2)
                 return Image.network(video.value.thumbnailUrl);
               else
